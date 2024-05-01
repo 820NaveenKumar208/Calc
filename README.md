@@ -31,70 +31,110 @@ Publish the website in the given URL.
 ## calc.html:
 
 ```
-<!DOCTYPE html>
-<html lang="en">
+
+<html >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
-<body>
-    <script>
-        function fn(e) {
-            if(e.innerHTML == '=') {
-                output.value = eval(output.value);
-            }
-            else if(e.id == 'back') {
-                v = output.value;
-                output.value = v.substring(0, v.length-1);
-            }
-            else if(e.innerHTML == 'CA') {
-                output.value = '';
-            }
-            else {
-                output.value += e.innerHTML;
-            }
+
+    <title>Simple Calculator</title>
+    <style>
+        #calc {
+            text-align: center;
+            margin: auto;
+            width: 240px;
         }
-        </script>
-        <div class="bg-secondary mx-auto text-center text-white" style="width:25rem;">Naveen Kumar.T (212223220067)
-        </div>
+        .button {
+            margin-left: 550px;
+            margin-right: 550px;
+            padding: 30px;
+            background-color:rgb(0, 0, 0);
+            color: white;
+            border:5px solid cornflowerblue
+        }
+
+        .button input[type="button"] {
+            background-color:rgb(154, 221, 11);
+            height: 50px;
+            width: 50px;
+            margin: 0 2px;
+            border: 3px solid grey;
+        }
+    </style>
+</head>
+
+<body style="background-color: rgb(5, 51, 82);">
+        <h1 align="center" style="color: aliceblue;">NAVEEN KUMAR.T (212223220067)</h1>
+        <div class="button">
+            <center>
+            
+            <input type="text" id="t1" style="width:270px; height:30px;"><br><br>
+            <input type="button" onkeydown="op(event)" onclick="f('7')" value="7">
+            <input type="button" onkeydown="op(event)" onclick="f('8')" value="8">
+            <input type="button" onkeydown="op(event)" onclick="f('9')" value="9">
+            <input type="button" onkeydown="op(event)" onclick="f('+')" value="+">
+            <input type="button" onkeydown="op(event)" value="C"  onclick="clr()"><br><br>
+
+            <input type="button" onkeydown="op(event)" onclick="f('4')" value="4">
+            <input type="button" onkeydown="op(event)" onclick="f('5')" value="5">
+            <input type="button" onkeydown="op(event)" onclick="f('6')" value="6">
+            <input type="button" onkeydown="op(event)" onclick="f('*')" value="x">
+            <input type="button" onkeydown="op(event)" onclick="f('%')" value="%"><br><br>
+    
+            <input type="button" onkeydown="op(event)" onclick="f('1')" value="1">
+            <input type="button" onkeydown="op(event)" onclick="f('2')" value="2">
+            <input type="button" onkeydown="op(event)" onclick="f('3')" value="3">
+            <input type="button" onkeydown="op(event)" onclick="f('-')" value="-">
+            <input type="button" onkeydown="op(event)" onclick="f('/')" value="/"><br><br>
         
-        <div class="bg-secondary row mx-auto text-center" style="width:25rem;">
-            <div class="col-12 my-4"><input type="text" name="" id="output"
-                    style="width: 100%; height: 50px; border-radius: 25px;"></div>
-            <div class="m-3 col-2 btn btn-primary rounded-7" onclick="fn(this)">(</div> 
-            <div class="m-3 col-2 btn btn-primary rounded-7" onclick="fn(this)">)</div>
-            <div class="m-3 col-2 btn btn-info rounded-7" onclick="fn(this)">CA</div>
-            <div class="m-3 col-2 btn btn-info rounded-7" onclick="fn(this)" id="back"><i class="bi bi-backspace-fill"></i>
-            </div>
-            <div class="m-3 col-2 btn btn-dark rounded-" onclick="fn(this)">7</div>
-            <div class="m-3 col-2 btn btn-dark rounded-7" onclick="fn(this)">8</div>
-            <div class="m-3 col-2 btn btn-dark rounded-7" onclick="fn(this)">9</div>
-            <div class="m-3 col-2 btn btn-dark rounded-7" onclick="fn(this)">*</div>
-            <div class="m-3 col-2 btn btn-dark rounded-7" onclick="fn(this)">4</div>
-            <div class="m-3 col-2 btn btn-dark rounded-7" onclick="fn(this)">5</div>
-            <div class="m-3 col-2 btn btn-dark rounded-7" onclick="fn(this)">6</div>
-            <div class="m-3 col-2 btn btn-dark rounded-7" onclick="fn(this)">-</div>
-            <div class="m-3 col-2 btn btn-dark rounded-7" onclick="fn(this)">1</div>
-            <div class="m-3 col-2 btn btn-dark rounded-7" onclick="fn(this)">2</div>
-            <div class="m-3 col-2 btn btn-dark rounded-7" onclick="fn(this)">3</div>
-            <div class="m-3 col-2 btn btn-dark rounded-7" onclick="fn(this)">+</div>
-            <div class="m-3 col-2 btn btn-dark rounded-7" onclick="fn(this)">.</div>
-            <div class="m-3 col-5 btn btn-dark rounded-7" onclick="fn(this)">0</div>
-            <div class="m-3 col-2 btn btn-dark rounded-7" onclick="fn(this)">/</div>
-            <div class="m-3 col-11 btn btn-primary rounded-7" onclick="fn(this)">=</div>
+            <input type="button" onkeydown="op(event)" onclick="f('0')" value="0">
+            <input type="button" onkeydown="op(event)" onclick="f('.')"
+                value=".">
+            
+            <input type="button" onkeydown="op(event)" onclick="f('+')" value="+">
+            <input type="button" onclick="solve()" value="=" style="color: blue; width: 60px; height: 60px;;font-weight:bolder;">
+        </center>
         </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.4.4/math.js"></script>
+
+<script>
+    function f(val) {
+        document.getElementById('t1').value += val;
+    }
+
+    function clr() {
+        document.getElementById('t1').value = "";
+    }
+
+    function op(event) {
+        if (event.key == '7' || event.key == '8' || event.key == '9' || event.key == '+' || event.key == '+/-' || event.key == '4' ||
+            event.key == '5' || event.key == '6' || event.key == '*' || event.key == '^0.5' || event.key == '1' ||
+            event.key == '2' || event.key == '3' || event.key == '-' || event.key == '/' || event.key == '0' || event.key == '.') {
+            document.getElementById('t1').value += event.key;
+        }
+    }
+
+    var cal = document.getElementById('calc');
+    cal.onkeyup = function (event) {
+        if (event.keyCode == 13) {
+            console.log("Enter");
+            solve();
+        }
+    }
+
+    function solve() {
+        let x = document.getElementById('t1').value;
+        let y = math.evaluate(x); // Assuming you have included the math.js library
+        document.getElementById('t1').value = y;
+    }
+</script>
+
 </html>
 ```
 ## OUTPUT:
 addition process
-![alt text](<NK/calcapp/Screenshot (107).png>)
-
+![alt text](<NK/NK/Screenshot (122).png>)
 result:
-![alt text](<NK/calcapp/Screenshot 2024-04-23 054322.png>)
+![alt text](<NK/NK/Screenshot (123).png>)
 
 
 ## RESULT:
